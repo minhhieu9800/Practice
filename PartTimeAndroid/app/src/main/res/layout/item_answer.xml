@@ -30,7 +30,7 @@
         android:id="@+id/linear_item_answer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#a9f6e39d"
+        android:background="#a981e8ac"
         android:visibility="invisible"
         android:orientation="vertical"
         />

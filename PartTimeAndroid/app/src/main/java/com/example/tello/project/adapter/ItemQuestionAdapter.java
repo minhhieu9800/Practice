@@ -79,7 +79,7 @@ public class ItemQuestionAdapter extends RecyclerView.Adapter<ItemAnswer> {
                 itemAnswer.linearItemAnswer.setBackgroundColor(Color.parseColor("#a9f99ea9"));
             }
         }else{
-            itemAnswer.linearItemAnswer.setBackgroundColor(Color.parseColor("#a9f6e39d"));
+            itemAnswer.linearItemAnswer.setBackgroundColor(Color.parseColor("#a981e8ac"));
         }
     }
 
