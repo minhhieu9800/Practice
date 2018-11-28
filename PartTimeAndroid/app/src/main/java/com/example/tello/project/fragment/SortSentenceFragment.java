@@ -19,6 +19,9 @@ import com.example.tello.project.Model.Sentence;
 import com.example.tello.project.R;
 import com.example.tello.project.action.IOnClick;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -92,7 +95,7 @@ public class SortSentenceFragment extends Fragment implements View.OnClickListen
     private void createWordInSentence(){
         String sentence = mSentence.getSentenceKorea().trim();
         String[] words = sentence.split(" ");
-
+        words = randomSentence(words);
         for(String temp:words){
             final Button button = new Button(mListQuestionActivity);
             button.setTextColor(Color.parseColor("#000000"));
@@ -108,6 +111,19 @@ public class SortSentenceFragment extends Fragment implements View.OnClickListen
             });
             mLinearSentence.addView(button);
         }
+    }
+    private String[] randomSentence(String[] sentence){
+        int size = sentence.length;
+        String[] result = new String[size];
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i=0;i<size;){
+            int temp = new Random().nextInt(size);
+            if(!list.contains(temp)) {
+                result[i++] = sentence[temp];
+                list.add(temp);
+            }
+        }
+        return result;
     }
 
     private void clickWordToLinearSentence(final String word){
