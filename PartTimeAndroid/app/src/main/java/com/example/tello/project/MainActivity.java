@@ -11,19 +11,33 @@ import android.widget.Button;
 import com.example.tello.project.fragment.ListQuestionFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnClick;
+    Button btnView1,btnView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnClick = findViewById(R.id.click);
-        btnClick.setOnClickListener(this);
+        btnView1 = findViewById(R.id.btn_view_1);
+        btnView1.setOnClickListener(this);
+
+        btnView2 = findViewById(R.id.btn_view_2);
+        btnView2.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(this,ListQuestionActivity.class);
-        startActivity(intent);
+        Bundle bundle = new Bundle();
+        Intent intent;
+        switch (view.getId()){
+            case R.id.btn_view_1:
+                intent = new Intent(this,ListQuestionActivity.class);
+                bundle.putInt("View",1);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            case R.id.btn_view_2:
+
+        }
+
     }
 }

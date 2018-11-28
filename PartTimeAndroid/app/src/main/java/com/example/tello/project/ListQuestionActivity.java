@@ -23,10 +23,13 @@ public class ListQuestionActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_question);
-        createQuestion();
+        int view = getIntent().getExtras().getInt("View");
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frame_fragment,new ListQuestionFragment(question,this));
+        if(view == 1) {
+            createQuestion();
+            fragmentTransaction.add(R.id.frame_fragment, new ListQuestionFragment(question, this));
+        }
         fragmentTransaction.commit();
     }
 
@@ -39,7 +42,7 @@ public class ListQuestionActivity extends AppCompatActivity {
             Answer answer = new Answer();
             answer.setWordEnglish("asd");
             answer.setWordKorean("bcd");
-            answer.setLinkAudio("https://vnso-zn-5-tf-mp3-s1-zmp3.zadn.vn/93e7d9db119ff8c1a18e/972233365974826665?authen=exp=1543281930~acl=/93e7d9db119ff8c1a18e/*~hmac=b5e31c35e8ea11fa9dacf431c7a37dcf");
+            answer.setLinkAudio("https://mp3.zing.vn/bai-hat/24H-LyLy-Magazine/ZW9FU9OW.html?play_song=1");
             answer.setLinkImg("https://arstechnica.com/science/2016/02/tiny-blurry-pictures-find-the-limits-of-computer-image-recognition/");
             listAnswer.add(answer);
         }

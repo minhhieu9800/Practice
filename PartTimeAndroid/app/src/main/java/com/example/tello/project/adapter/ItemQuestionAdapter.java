@@ -1,6 +1,8 @@
 package com.example.tello.project.adapter;
 
 import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import com.example.tello.project.action.IOnClickItem;
 import com.example.tello.project.R;
 import com.example.tello.project.holder.ItemAnswer;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ItemQuestionAdapter extends RecyclerView.Adapter<ItemAnswer> {
@@ -48,7 +51,14 @@ public class ItemQuestionAdapter extends RecyclerView.Adapter<ItemAnswer> {
         itemAnswer.btnSpeaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mListQuestionActivity,"Speaker",Toast.LENGTH_LONG).show();
+                MediaPlayer mediaPlayer = new MediaPlayer();
+                try {
+                    mediaPlayer.setDataSource(mListQuestionActivity,Uri.parse(answer.getLinkAudio()));
+                    mediaPlayer.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mediaPlayer.start();
             }
         });
         itemAnswer.cardView.setOnClickListener(new View.OnClickListener() {

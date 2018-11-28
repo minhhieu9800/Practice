@@ -57,18 +57,22 @@ public class ListQuestionFragment extends Fragment implements IOnClickItem,IOnCl
             @Override
             public void onClick(View view) {
                 Answer result = question.getListAnswer().get(question.getIntdexOfAnswer());
-                if(question.getIntdexOfAnswer() != postion){
-                    AnswerWrongFragment fragmentWrongAnswer = new AnswerWrongFragment(result.getWordKorean(),result.getWordEnglish(),mListQuestionFragment);
-                    fragmentWrongAnswer.setCancelable(false);
-                    fragmentWrongAnswer.show(mListQuestionActivity.getSupportFragmentManager(),"wrongfragment");
+                if(postion == -1){
+                    Toast.makeText(mListQuestionActivity,"Please choose answer first",Toast.LENGTH_LONG).show();
+                }else {
+                    if (question.getIntdexOfAnswer() != postion) {
+                        AnswerWrongFragment fragmentWrongAnswer = new AnswerWrongFragment(result.getWordKorean(), result.getWordEnglish(), mListQuestionFragment);
+                        fragmentWrongAnswer.setCancelable(false);
+                        fragmentWrongAnswer.show(mListQuestionActivity.getSupportFragmentManager(), "wrongfragment");
 
-                }else{
-                    AnswerRightFragment fragmentRightAnswer = new AnswerRightFragment(result.getWordKorean(),result.getWordEnglish(),mListQuestionFragment);
-                    fragmentRightAnswer.setCancelable(false);
-                    fragmentRightAnswer.show(mListQuestionActivity.getSupportFragmentManager(),"rightfragment");
+                    } else {
+                        AnswerRightFragment fragmentRightAnswer = new AnswerRightFragment(result.getWordKorean(), result.getWordEnglish(), mListQuestionFragment);
+                        fragmentRightAnswer.setCancelable(false);
+                        fragmentRightAnswer.show(mListQuestionActivity.getSupportFragmentManager(), "rightfragment");
+                    }
+                    adapter.isConfirm = true;
+                    adapter.notifyDataSetChanged();
                 }
-                adapter.isConfirm = true;
-                adapter.notifyDataSetChanged();
             }
         });
         return view;

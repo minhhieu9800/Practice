@@ -33,22 +33,26 @@
                     />
 
                 <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
                     >
 
                     <ImageView
                         android:id="@+id/btn_speaker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="32dp"
                         android:layout_marginRight="32dp"
                         android:layout_marginBottom="8dp"
-                        android:src="@drawable/ic_speaker"
+                        android:src="@drawable/ic_speaker_2"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/tv_word_korea"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -59,9 +63,11 @@
                         android:layout_marginLeft="64dp"
                         android:text="dasdas"
                         android:textColor="#000000"
+                        android:textSize="18dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/btn_speaker" />
 
                     <TextView
                         android:id="@+id/tv_word_viet_nam"
@@ -70,6 +76,7 @@
                         android:text="dasdas"
                         android:textColor="#000000"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/btn_speaker"
                         app:layout_constraintEnd_toEndOf="@+id/tv_word_korea"
                         app:layout_constraintStart_toStartOf="@+id/tv_word_korea"
                         app:layout_constraintTop_toBottomOf="@+id/tv_word_korea" />
@@ -93,7 +100,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_wrong"
+        android:src="@drawable/ic_emoji_happy"
         android:layout_gravity="center_horizontal"
         />
 </FrameLayout>

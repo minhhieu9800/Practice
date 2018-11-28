@@ -35,16 +35,17 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_list_answer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_confirm"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear_question" />
+        app:layout_constraintTop_toBottomOf="@+id/linear_question"
+        android:textAlignment="gravity"
+        />
 
 
     <Button
@@ -54,6 +55,8 @@
         android:background="#fccf16"
         android:text="Confirm"
         android:textColor="#000000"
+        android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
