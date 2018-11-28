@@ -103,6 +103,7 @@ public class SortSentenceFragment extends Fragment implements View.OnClickListen
                 public void onClick(View view) {
                     clickWordToLinearSentence(button.getText().toString());
                     button.setTextColor(getResources().getColor(android.R.color.transparent));
+                    button.setEnabled(false);
                 }
             });
             mLinearSentence.addView(button);
@@ -121,6 +122,7 @@ public class SortSentenceFragment extends Fragment implements View.OnClickListen
                     Button temp = (Button) mLinearSentence.getChildAt(i);
                     if(word.equals(temp.getText())){
                         temp.setTextColor(Color.parseColor("#000000"));
+                        temp.setEnabled(true);
                         mLinearSortSentence.removeView(view);
                         break;
                     }
