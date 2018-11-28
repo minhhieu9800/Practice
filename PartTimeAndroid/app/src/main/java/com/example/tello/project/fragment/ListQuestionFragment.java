@@ -81,7 +81,7 @@ public class ListQuestionFragment extends Fragment implements IOnClickItem,IOnCl
     @Override
     public void OnClick(int position) {
         if(position != this.postion){
-            adapter.isClick = true;
+
             for(Answer answer:question.getListAnswer()){
                 answer.setClick(false);
             }
@@ -105,7 +105,7 @@ public class ListQuestionFragment extends Fragment implements IOnClickItem,IOnCl
         for(Answer answer:question.getListAnswer()){
             answer.setClick(false);
         }
-        adapter.isClick = false;
+
         adapter.isConfirm = false;
         this.postion = -1;
         adapter.notifyDataSetChanged();

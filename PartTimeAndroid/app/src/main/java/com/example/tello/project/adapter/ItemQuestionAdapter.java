@@ -24,7 +24,7 @@ public class ItemQuestionAdapter extends RecyclerView.Adapter<ItemAnswer> {
     private List<Answer> mListAnswer;
     private ListQuestionActivity mListQuestionActivity;
     private Question mQuestion;
-    public boolean isClick,isConfirm;
+    public boolean isConfirm;
     private IOnClickItem IOnClickItem;
 
 
@@ -69,7 +69,9 @@ public class ItemQuestionAdapter extends RecyclerView.Adapter<ItemAnswer> {
         });
 
         itemAnswer.linearItemAnswer.setVisibility((answer.isClick())?View.VISIBLE:View.INVISIBLE);
-        itemAnswer.layoutItemAnswer.setVisibility((isClick)?View.INVISIBLE:View.VISIBLE);
+        itemAnswer.tvUpper.setTextColor((answer.isClick())?Color.parseColor("#ffffff"):Color.parseColor("#000000"));
+        itemAnswer.tvAbove.setTextColor((answer.isClick())?Color.parseColor("#ffffff"):Color.parseColor("#000000"));
+        itemAnswer.btnSpeaker.setImageResource((answer.isClick())?R.drawable.ic_speaker_choose:R.drawable.ic_speaker);
         if(isConfirm){
             if(i == mQuestion.getIntdexOfAnswer()){
                 itemAnswer.linearItemAnswer.setBackgroundColor(Color.parseColor("#a98aa7ef"));
