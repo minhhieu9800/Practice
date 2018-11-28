@@ -136,7 +136,9 @@ public class SortSentenceFragment extends Fragment implements View.OnClickListen
     public void onBack() {
         mLinearSortSentence.removeAllViews();
         for(int i=0;i<mLinearSentence.getChildCount();i++){
-            ((Button)mLinearSentence.getChildAt(i)).setTextColor(Color.parseColor("#000000"));
+            Button temp = ((Button)mLinearSentence.getChildAt(i));
+            temp.setTextColor(Color.parseColor("#000000"));
+            temp.setEnabled(true);
         }
     }
 
