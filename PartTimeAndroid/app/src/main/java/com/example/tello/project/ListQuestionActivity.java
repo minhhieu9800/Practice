@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.tello.project.Model.Answer;
 import com.example.tello.project.Model.Question;
+import com.example.tello.project.Model.Sentence;
 import com.example.tello.project.fragment.ListQuestionFragment;
+import com.example.tello.project.fragment.SortSentenceFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,7 @@ import java.util.List;
 public class ListQuestionActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     Question question;
-
+    Sentence sentence;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,14 +31,14 @@ public class ListQuestionActivity extends AppCompatActivity {
         if(view == 1) {
             createQuestion();
             fragmentTransaction.add(R.id.frame_fragment, new ListQuestionFragment(question, this));
+        }else if(view == 2){
+            createSentence();
+            fragmentTransaction.add(R.id.frame_fragment,new SortSentenceFragment(sentence,this));
         }
         fragmentTransaction.commit();
     }
 
     private void createQuestion(){
-        if(question == null){
-            question = new Question();
-        }
         List<Answer> listAnswer = new ArrayList<>();
         for(int i=0;i<4;i++){
             Answer answer = new Answer();
@@ -46,8 +48,10 @@ public class ListQuestionActivity extends AppCompatActivity {
             answer.setLinkImg("https://arstechnica.com/science/2016/02/tiny-blurry-pictures-find-the-limits-of-computer-image-recognition/");
             listAnswer.add(answer);
         }
-        question.setListAnswer(listAnswer);
-        question.setIntdexOfAnswer(0);
-        question.setTitle("asdasd");
+        question = new Question("title",listAnswer,1);
+    }
+
+    private void createSentence(){
+        sentence = new Sentence("","You are my love <3");
     }
 }

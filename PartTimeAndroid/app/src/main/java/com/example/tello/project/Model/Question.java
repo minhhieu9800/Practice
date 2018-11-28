@@ -7,6 +7,12 @@ public class Question {
     private List<Answer> listAnswer;
     private int intdexOfAnswer;
 
+    public Question(String title, List<Answer> listAnswer, int intdexOfAnswer) {
+        this.title = title;
+        this.listAnswer = listAnswer;
+        this.intdexOfAnswer = intdexOfAnswer;
+    }
+
     public String getTitle() {
         return title;
     }

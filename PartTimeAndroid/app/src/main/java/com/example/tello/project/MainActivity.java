@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (view.getId()){
             case R.id.btn_view_1:
-                intent = new Intent(this,ListQuestionActivity.class);
                 bundle.putInt("View",1);
-                intent.putExtras(bundle);
-                startActivity(intent);
                 break;
             case R.id.btn_view_2:
-
+                bundle.putInt("View",2);
+                break;
         }
-
+        intent = new Intent(this,ListQuestionActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
