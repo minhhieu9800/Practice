@@ -12,15 +12,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tello.project.ListQuestionActivity;
 import com.example.tello.project.Model.Sentence;
 import com.example.tello.project.R;
+import com.example.tello.project.action.IOnClick;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SortSentenceFragment extends Fragment implements View.OnClickListener {
+public class SortSentenceFragment extends Fragment implements View.OnClickListener,IOnClick {
     private Sentence mSentence;
     private ListQuestionActivity mListQuestionActivity;
     private Button mBtnCheck;
@@ -63,6 +65,24 @@ public class SortSentenceFragment extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_check:
+                int lengthSentenceCheck = mLinearSortSentence.getChildCount();
+                if(lengthSentenceCheck != mLinearSentence.getChildCount()){
+                    Toast.makeText(mListQuestionActivity,"Please complete sentence !!",Toast.LENGTH_LONG).show();
+                }else{
+                    String temp = "";
+                    for(int i=0;i<lengthSentenceCheck;i++){
+                        temp += ((Button)mLinearSortSentence.getChildAt(i)).getText()+" ";
+                    }
+                    if(temp.trim().equals(mSentence.getSentenceKorea().trim())){
+                        AnswerRightFragment answerRightFragment = new AnswerRightFragment(mSentence.getSentenceKorea(),mSentence.getSentenceVietNam(),this);
+                        answerRightFragment.setCancelable(false);
+                        answerRightFragment.show(mListQuestionActivity.getSupportFragmentManager(),"rightFragment");
+                    }else{
+                        AnswerWrongFragment answerWrongFragment = new AnswerWrongFragment(mSentence.getSentenceKorea(),mSentence.getSentenceVietNam(),this);
+                        answerWrongFragment.setCancelable(false);
+                        answerWrongFragment.show(mListQuestionActivity.getSupportFragmentManager(),"wrongFragment");
+                    }
+                }
                 break;
             case R.id.btn_speaker:
                 break;
@@ -70,7 +90,7 @@ public class SortSentenceFragment extends Fragment implements View.OnClickListen
     }
 
     private void createWordInSentence(){
-        String sentence = mSentence.getSentence().trim();
+        String sentence = mSentence.getSentenceKorea().trim();
         String[] words = sentence.split(" ");
 
         for(String temp:words){
@@ -108,5 +128,18 @@ public class SortSentenceFragment extends Fragment implements View.OnClickListen
             }
         });
         mLinearSortSentence.addView(button);
+    }
+
+    @Override
+    public void onBack() {
+        mLinearSortSentence.removeAllViews();
+        for(int i=0;i<mLinearSentence.getChildCount();i++){
+            ((Button)mLinearSentence.getChildAt(i)).setTextColor(Color.parseColor("#000000"));
+        }
+    }
+
+    @Override
+    public void onNext() {
+        Toast.makeText(mListQuestionActivity,"Next Question",Toast.LENGTH_LONG).show();
     }
 }

@@ -2,11 +2,13 @@ package com.example.tello.project.Model;
 
 public class Sentence {
     private String linkAudio;
-    private String sentence;
+    private String sentenceKorea;
+    private String sentenceVietNam;
 
-    public Sentence(String linkAudio, String sentence) {
+    public Sentence(String linkAudio, String sentenceKorea, String sentenceVietNam) {
         this.linkAudio = linkAudio;
-        this.sentence = sentence;
+        this.sentenceKorea = sentenceKorea;
+        this.sentenceVietNam = sentenceVietNam;
     }
 
     public String getLinkAudio() {
@@ -17,11 +19,19 @@ public class Sentence {
         this.linkAudio = linkAudio;
     }
 
-    public String getSentence() {
-        return sentence;
+    public String getSentenceKorea() {
+        return sentenceKorea;
     }
 
-    public void setSentence(String sentence) {
-        this.sentence = sentence;
+    public void setSentenceKorea(String sentenceKorea) {
+        this.sentenceKorea = sentenceKorea;
+    }
+
+    public String getSentenceVietNam() {
+        return sentenceVietNam;
+    }
+
+    public void setSentenceVietNam(String sentenceVietNam) {
+        this.sentenceVietNam = sentenceVietNam;
     }
 }

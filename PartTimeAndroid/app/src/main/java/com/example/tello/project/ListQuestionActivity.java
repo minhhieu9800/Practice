@@ -52,6 +52,6 @@ public class ListQuestionActivity extends AppCompatActivity {
     }
 
     private void createSentence(){
-        sentence = new Sentence("","You are my love <3");
+        sentence = new Sentence("","You are my love <3","Dịch nè");
     }
 }
